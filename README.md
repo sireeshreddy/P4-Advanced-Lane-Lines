@@ -32,9 +32,9 @@ The goals / steps of this project are the following:
 ## Camera Calibration
 
 The camera was calibrated using the chessboard images in the 'camera_cal' folder
-1. The images were converted to grayscale
-2. Corners were found Using `cv2.findChessboardCorners()` and drawn using `cv2.drawChessboardCorners()`
-3. Using image points and object points the `cv2.calibrateCamera()` method was used to calibrate the camera
+* The images were converted to grayscale
+* Corners were found Using `cv2.findChessboardCorners()` and drawn using `cv2.drawChessboardCorners()`
+* Using image points and object points the `cv2.calibrateCamera()` method was used to calibrate the camera
 
 ## Lane Detection Pipeline
 
@@ -48,20 +48,20 @@ b. Undistorted image generated using the `cv2.undistort()` method
 ![alt text][image2]
 
 ### 2. Creating a Binary image to identify lane lines
-a. Convert to HLS space
-b. Apply absolute Sobel operator on the image
-c. Apply sobel operator in horizontal direction
-d. Threshold saturation and lightness
-e. Combine binary images to create a final binary image like the one below
+* Convert to HLS space
+* Apply absolute Sobel operator on the image
+* Apply sobel operator in horizontal direction
+* Threshold saturation and lightness
+* Combine binary images to create a final binary image like the one below
   
 ![alt text][image3]
 
 
 ### 3. Apply a perspective transform
-a. A perspective transform is applied to give a bird's eye view of the road in order to identify the lane lines
-b. the source and desitnation points were hardcoded after obtaining the points manually through visual inspection
-c. `cv2.getPerspectiveTransform()` and `cv2.warpPerspective()` methods were used to transform the perspective of the image and obtain a birds-eye view
-d. A region of interest is created by applying a mask to only focus on the lane lines and ignore other portions of the image like the image below
+* A perspective transform is applied to give a bird's eye view of the road in order to identify the lane lines
+* the source and desitnation points were hardcoded after obtaining the points manually through visual inspection
+* `cv2.getPerspectiveTransform()` and `cv2.warpPerspective()` methods were used to transform the perspective of the image and obtain a birds-eye view
+* A region of interest is created by applying a mask to only focus on the lane lines and ignore other portions of the image like the image below
 
 Warped Image
 ![alt text][image4]
@@ -79,35 +79,36 @@ Warped Binary Image
 ![alt text][image5]
 
 ### 4. Detect lane pixels
-a. I used the binary warped image obtained in the previous step and took the following steps
-b. Starting from the bottom half, computed a histogram of detected pixel values. Peaks are detected following the application of a gaussian filter
-c. The image is partitioned into 6 horizontal slices
-d. Starting from the bottom slice, a 300 pixel wide window is used around the left peak and right peak of the histogram to determine points that could possible be the lane line
-e. This window is moved upwards to find pixels that could possibly be part of the lane line while recentering based on the center of the previous window
+* I used the binary warped image obtained in the previous step and took the following steps
+* Starting from the bottom half, computed a histogram of detected pixel values. Peaks are detected following the application of a gaussian filter
+* The image is partitioned into 6 horizontal slices
+* Starting from the bottom slice, a 300 pixel wide window is used around the left peak and right peak of the histogram to determine points that could possible be the lane line
+* This window is moved upwards to find pixels that could possibly be part of the lane line while recentering based on the center of the previous window
  
 All of the above code is defined in cell 14 containing the `class Line()` as well as the method `get_binary_lane_image()`
   
 A fit to the current lane candidate is saved in the Line.current_fit_xvals attribute, together with the corresponding coefficients. The result of a fit for two lines is shown below.
 
 ### 5. Finding the curvature of the line
-a. For a second order polynomial f(y)=A y^2 +B y + C the radius of curvature is given by R = [(1+(2 Ay +B)^2 )^3/2]/|2A|
-b. Fixed lane width of 3.7m is assumed
-c. The `set_radius_of_curvature()` method computes this
-d. The distance from the center of the lane is computed in the `set_line_base_pos()` method, which measures the distance to each lane and computes the position assuming the lane has a given fixed width of 3.7m.
+* For a second order polynomial f(y)=A y^2 +B y + C the radius of curvature is given by R = [(1+(2 Ay +B)^2 )^3/2]/|2A|
+* Fixed lane width of 3.7m is assumed
+* The `set_radius_of_curvature()` method computes this
+* The distance from the center of the lane is computed in the `set_line_base_pos()` method, which measures the distance to each lane and computes the position assuming the lane has a given fixed width of 3.7m.
 
 ![alt text][image6]
 
 ### 6. Warping lane boundaries back onto original image
 With all the data collected above, all that is left is to annotate the original image with information about lane curvature and distance from center. This is done by
-a. Draw polyfit lines on a blank image
-b. Fill area between the lines with a green color
-c. Undistort and unwarp the image using the `project_lane_lines()` function
-d. Overlay the information on the original image using the `process_image()` function
+
+* Draw polyfit lines on a blank image
+* Fill area between the lines with a green color
+* Undistort and unwarp the image using the `project_lane_lines()` function
+* Overlay the information on the original image using the `process_image()` function
 
 ![alt text][image7]
   
 ### 7. Output visual display
-a. The code to process the video is in cell 19
-b. The annotated video is saved in './output_images/processed_project_video.mp4'
+* The code to process the video is in cell 19
+* The annotated video is saved in './output_images/processed_project_video.mp4'
 
 ![alt text][video1]
