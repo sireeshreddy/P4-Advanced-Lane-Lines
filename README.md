@@ -31,7 +31,9 @@ Steps taken to create a lane detection pipeline are as follows
 
 ### 1. Distortion correction
 
-  a. Original image ('insert original image')
+  a. Original image
+  ![Original image]
+  https://github.com/sireeshreddy/P4-Advanced-Lane-Lines/blob/master/camera_cal/calibration1.jpg  
   b. Undistorted image generated using the cv2.undistort() method ('insert undistorted image')
 
 ### 2. Creating a Binary image to identify lane lines
