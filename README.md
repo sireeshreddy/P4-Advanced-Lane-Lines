@@ -20,8 +20,8 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./camera_cal/calibration1.jpg "Undistorted"
-[image2]: ./test_images/test1.jpg "Road Transformed"
+[image1]: ./test_images/test1.jpg "Original Image"
+[image2]: ./output_images/undistorted_test1.jpg "Undistorted Image"
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
@@ -32,8 +32,8 @@ The goals / steps of this project are the following:
 
 The camera was calibrated using the chessboard images in the 'camera_cal' folder
 1. The images were converted to grayscale
-2. Corners were found Using ''' cv2.findChessboardCorners() ''' and drawn using cv2.drawChessboardCorners()
-3. Using image points and object points the cv2.calibrateCamera() method was used to calibrate the camera
+2. Corners were found Using `cv2.findChessboardCorners()` and drawn using `cv2.drawChessboardCorners()`
+3. Using image points and object points the `cv2.calibrateCamera()` method was used to calibrate the camera
 
 ## Lane Detection Pipeline
 
@@ -42,8 +42,9 @@ Steps taken to create a lane detection pipeline are as follows
 ### 1. Distortion correction
 
   a. Original image
-  ![alt text][image1]
-  b. Undistorted image generated using the cv2.undistort() method ('insert undistorted image')
+  [image1]
+  b. Undistorted image generated using the `cv2.undistort()` method 
+  [image2]
 
 ### 2. Creating a Binary image to identify lane lines
   a. Convert to HLS space
