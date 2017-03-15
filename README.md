@@ -118,4 +118,3 @@ With all the data collected above, all that is left is to annotate the original 
 * The pipeline works pretty well on the project video. However, the areas where the lane detection is a little shaky is in changing light conditions. Playing with the saturation and lightness thresholds helped greatly with detecting the lane lines
 * Another potential problem is when lane markings are not clearly visible due to debris, dust, snow, faded markings. Salt lines on the road can also easily trick the pipeline into thinking they are multiple lanes. In a situation like that a more robust deep learning network is what is needed
 
-* 
