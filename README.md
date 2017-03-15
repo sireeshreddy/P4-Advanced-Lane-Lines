@@ -42,9 +42,9 @@ Steps taken to create a lane detection pipeline are as follows
 ### 1. Distortion correction
 
   a. Original image
-  [image1]
+  ![alt text][image1]
   b. Undistorted image generated using the `cv2.undistort()` method 
-  [image2]
+  ![alt text][image2]
 
 ### 2. Creating a Binary image to identify lane lines
   a. Convert to HLS space
