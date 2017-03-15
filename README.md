@@ -18,6 +18,16 @@ The goals / steps of this project are the following:
 * Warp the detected lane boundaries back onto the original image.
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
+[//]: # (Image References)
+
+[image1]: ./camera_cal/calibration1.jpg "Undistorted"
+[image2]: ./test_images/test1.jpg "Road Transformed"
+[image3]: ./examples/binary_combo_example.jpg "Binary Example"
+[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
+[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
+[image6]: ./examples/example_output.jpg "Output"
+[video1]: ./project_video.mp4 "Video"
+
 ## Camera Calibration
 
 The camera was calibrated using the chessboard images in the 'camera_cal' folder
@@ -32,8 +42,7 @@ Steps taken to create a lane detection pipeline are as follows
 ### 1. Distortion correction
 
   a. Original image
-  ![Original image]
-  https://github.com/sireeshreddy/P4-Advanced-Lane-Lines/blob/master/camera_cal/calibration1.jpg  
+  ![alt text][image1]
   b. Undistorted image generated using the cv2.undistort() method ('insert undistorted image')
 
 ### 2. Creating a Binary image to identify lane lines
